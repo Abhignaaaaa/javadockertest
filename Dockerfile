@@ -1,16 +1,19 @@
-# Use an official OpenJDK runtime as a parent image
-FROM openjdk:11-jdk-slim
+# Run a container interactively with a terminal
+docker run -it ubuntu /bin/bash
 
-# Set the working directory inside the container
-WORKDIR /app
+# Run a container in detached mode (background)
+docker run -d nginx
 
-# Copy the current directory contents into the container at /app
-COPY . .
+# Run a container with a custom name
+docker run --name mycontainer alpine
 
-# Compile the Java program
-RUN javac Sample.java
+# Run a container and expose a port
+docker run -p 8080:80 nginx
 
-# Command to run the program
-CMD ["java", "Sample"]
+# Pass environment variables to the container
+docker run -e MY_VAR=value myimage
+
+# Mount a volume
+docker run -v /host/path:/container/path myimage
 
 
